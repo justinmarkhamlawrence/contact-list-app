@@ -11,8 +11,9 @@ body {
 	font-weight: bold;
 	// border: 1px solid;
 }
-#address-wrapper, #contacts-list {
+#address-wrapper, #contacts-list, #alt-address-wrapper{
 	list-style: none;
+	
 }
 #contact-wrapper {
 	padding-left: 5em;
@@ -28,8 +29,8 @@ li {
 	font-size: 1.1em;
 	padding-bottom: 0.5em;
 }
-#submit-btn {
-	// margin-left: 20em; 
+.button {
+	/*// margin-left: 20em; */
     padding: 0.5em;
     width: 8em;
     font-size: 1.2em;
@@ -39,12 +40,18 @@ hr {
 	background-color: #935f9c;
 	height: 0.3em;
 }
-#submit-btn{
+.button {
     background-color: #935f9c;
     outline: none;
-    border: none;
+    border: 1px, gray, solid;
 
 }
 a {
 	color: #25ca92;
+}
+#second-phone-input {
+	display: none;
+}
+.alt-address {
+	display: none;
 }

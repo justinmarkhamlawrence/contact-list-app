@@ -7,11 +7,17 @@ var form,
 	firstName,
 	lastName,
 	phoneNumber,
+	secondPhoneNumber,
 	street,
 	city,
 	state,
-	zipCode, 
+	zipCode,
+	altStreet,
+	altCity,
+	altState,
+	altZipCode, 
 	submitBtn,
+	titleName,
 
 // Previous Section
 	previousContacts,
@@ -19,6 +25,7 @@ var form,
 	outputLastName,
 	outputPhone,
 	addressWrapper,
+	altAddressWrapper,
 
 //array of contacts
 	contactsArray,	
@@ -35,19 +42,27 @@ form = $('#form-wrapper');
 firstName = $('#firstName');
 lastName = $('#lastName');
 phoneNumber = $('#phoneNumber');
+secondPhoneNumber = $('#secondPhoneNumber')
 street = $('#street');
 city = $('#city');
 state = $('#state');
 zipCode = $('#zipCode');
+altStreet = $('#altStreet');
+altCity = $('#altCity');
+altState = $('#altState');
+altZipCode = $('#altZipCode')
 submitBtn = $('#submit-btn');
 formControl = $('.form-control');
+titleName = $('#title-name')
 
 // outPut contact
 previousContacts = $('#previous-contacts');
 outputName = $('#print-name');
 outputLastName = $('#print-last-name');
 outputPhone = $('#print-phone');
+outputSecondPhone = $('#print-second-phone')
 addressWrapper = $('#address-wrapper');
+altAddressWrapper = $('#alt-address-wrapper')
 
 //Array of Contacts
 contactsArray = [];
@@ -62,14 +77,19 @@ listContacts = $('#contacts-list');
 // STEP 1 : Create an Object that holds/create the Contact Information 
 	//factory or Constructor 
 
-function Contact(firstName, lastName, phoneNumber, street, city, state, zipCode){
+function Contact(firstName, lastName, phoneNumber, secondPhoneNumber, street, city, state, zipCode, altStreet, altCity, altState, altZipCode){
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.phoneNumber = phoneNumber;
+	this.secondPhoneNumber = secondPhoneNumber;
 	this.street = street;
 	this.city = city;
 	this.state = state;
 	this.zipCode = zipCode;
+	this.altStreet = altStreet;
+	this.altCity = altCity;
+	this.altState = altState;
+	this.altZipCode = altZipCode;
 }
 
 Contact.prototype.address = function(){
@@ -78,6 +98,11 @@ Contact.prototype.address = function(){
 	return address;
 };
 
+Contact.prototype.altAddress = function(){
+	//we just wanted it to exists here 
+	var altAddress = this.altStreet + ' ' + this.altCity + ' ' + this.altState + ' ' + this.altZipCode;
+	return altAddress;
+};
 
 //STEP 2 : Every input on HTMl will populate a new instance of Contact Object 
  // fetch DOM elements 
@@ -85,7 +110,7 @@ Contact.prototype.address = function(){
 form.submit(function(e){
 	e.preventDefault();
 	// Create new Contact and push it to our array of Contacts 
-	contactsArray.push(new Contact(firstName.val(), lastName.val(), phoneNumber.val(), street.val(), city.val(), state.val(), zipCode.val()));
+	contactsArray.push(new Contact(firstName.val(), lastName.val(), phoneNumber.val(), secondPhoneNumber.val(), street.val(), city.val(), state.val(), zipCode.val(), altStreet.val(), altCity.val(), altState.val(), altZipCode.val()));
 	//Empty Input values
 	formControl.val('');
 	//Apends the link to the contact just created
@@ -139,10 +164,13 @@ function displayDetails(arrayOfContacts){
 	//if a name link is clicked, it goes and finds the matching element in the ContactsBook
 		var elementToDisplay = findContact(linkName, arrayOfContacts);
 	//Once we have the matching contact, we display in the Details section
+		titleName.text(elementToDisplay.firstName + ' ' + elementToDisplay.lastName);
 		outputName.text(elementToDisplay.firstName);
 		outputLastName.text(elementToDisplay.lastName);
 		outputPhone.text(elementToDisplay.phoneNumber);
+		outputSecondPhone.text(elementToDisplay.secondPhoneNumber)
 		addressWrapper.text(elementToDisplay.address());
+		altAddressWrapper.text(elementToDisplay.altAddress());
 	});
 }
 
@@ -154,7 +182,13 @@ displayDetails(contactsArray);
 	// First html add a button to add new contact. Be careful of format behavior instead of button use a span or an input['type=button']
 	// add a method to Contact Object that saves new Addresses to 1 single Contact. Array of Object. Address Object 
 	// the extra addresses can be removed : requires business logic and a button to remove the element from the DOM
-
+$('#second-address').on('click', function(e) {
+	e.preventDefault();
+	$('.alt-address').css('display', 'block');
+});
 // STEP  7 : Add similar funcionality to add extra phone numbers 
-
+$('#second-phone').on('click', function(e) {
+	e.preventDefault();
+	$('#second-phone-input').css('display', 'block');
+});
 });

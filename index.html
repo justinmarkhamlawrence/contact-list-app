@@ -25,6 +25,10 @@
                         <label for="phoneNumber">Phone Number </label>
                         <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your Phone Number">
                     </fieldset>
+                    <fieldset class="form-group" id="second-phone-input">
+                        <label for="secondPhoneNumber">2nd Phone Number </label>
+                        <input type="tel" class="form-control" id="secondPhoneNumber" placeholder="Enter your Phone Number">
+                    </fieldset>
                     <fieldset class="form-group">
                         <label for="street"> Street </label>
                         <input type="text" class="form-control" id="street" placeholder="Enter your street">
@@ -41,7 +45,27 @@
                         <label for="zipCode"> Zip Code </label>
                         <input type="number" class="form-control" id="zipCode" placeholder="Enter your Zip Code">
                     </fieldset>
-                    <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
+                    <fieldset class="form-group alt-address">
+                        <label for="altStreet"> Alternate Street </label>
+                        <input type="text" class="form-control" id="altStreet" placeholder="Enter your street">
+                    </fieldset>
+                    <fieldset class="form-group alt-address">
+                        <label for="altCity"> Alternate City </label>
+                        <input type="text" class="form-control" id="altCity" placeholder="Enter your city">
+                    </fieldset>
+                    <fieldset class="form-group alt-address">
+                        <label for="altState"> Alternate State </label>
+                        <input type="text" class="form-control" id="altState" placeholder="Enter your state">
+                    </fieldset>
+                    <fieldset class="form-group alt-address">
+                        <label for="altZipCode"> Alternate Zip Code </label>
+                        <input type="number" class="form-control" id="altZipCode" placeholder="Enter your Zip Code">
+                    </fieldset>
+                    <div class="btn-group" role="group">
+                        <button id="second-phone" class="btn btn-primary button">2nd Phone #</button>
+                        <button id="second-address" class="btn btn-primary button">2nd Address</button>
+                        <button id="submit-btn" type="submit" class="btn btn-primary button">Submit</button>
+                    </div>
                 </form>
                 <section class="col-md-6" id="previous-contacts">
                     <div id="contact-wrapper">
@@ -49,9 +73,14 @@
                     <p class="single-line">First Name: </p><span id="print-name">Justin</span><br>
                     <p class="single-line">Last Name: </p><span id="print-last-name">Lawrence</span><br>
                     <p class="single-line">Phone #: </p><span id="print-phone">123-123-1234</span><br>
+                    <p class="single-line">Alternate Phone #: </p><span id="print-second-phone">123-123-1234</span><br>
                     <p class="single-line">Address: </p>
                     <ul id="address-wrapper">
                         <li>123 First Street</li>
+                    </ul><br>
+                    <p class="single-line">Alternate Address: </p>
+                    <ul id="alt-address-wrapper">
+                        <li>456 Second Street</li>
                     </ul><br>
                     </div>
                     <hr>
